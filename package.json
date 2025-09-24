@@ -1,0 +1,46 @@
+{
+  "name": "activecollab-desktop",
+  "private": true,
+  "version": "1.0.0",
+  "main": "electron-main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron-dev": "concurrently \"npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron-prod": "npm run build && electron .",
+    "build:mac": "electron-builder --mac"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "concurrently": "^9.2.1",
+    "electron": "^38.1.2",
+    "vite": "^7.0.4",
+    "wait-on": "^9.0.1",
+    "electron-builder": "^24.6.0"
+  },
+  "build": {
+    "appId": "com.activecollab.desktop",
+    "mac": {
+      "icon": "src/assets/logo.icns"
+    },
+    "files": [
+      "dist/**/*",
+      "electron-main.js",
+      "preload.cjs",
+      "src/assets/**/*"
+    ],
+    "dmg": {
+      "background": "src/assets/splash.png",
+      "icon": "src/assets/logo.icns",
+      "iconSize": 100
+    }
+  }
+}

@@ -1,0 +1,123 @@
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  background: linear-gradient(to bottom, #f9f9f9 0%, #f0f0f0 100%);
+  color: #000;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  border-bottom: 1px solid rgba(0,0,0,0.0); /* invisible border for sharp edge */
+  box-shadow: none; /* no blur */
+}
+
+
+.titlebar-drag {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 80px;
+}
+
+.title-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  pointer-events: none;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  opacity: 0.9;
+}
+
+.window-controls {
+  display: flex;
+  -webkit-app-region: no-drag;
+  height: 100%;
+  margin-left: auto;
+}
+
+.control-btn {
+  width: 48px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: #000; /* Pure black icons */
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.control-btn svg {
+  fill: currentColor;
+  transition: fill 0.15s ease;
+  width: 14px;
+  height: 14px;
+  shape-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+}
+
+.control-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* very subtle hover */
+}
+
+.control-btn:active {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.control-btn.minimize-btn:hover,
+.control-btn.maximize-btn:hover {
+  color: #000; /* icon stays pure black */
+}
+
+.control-btn.close-btn:hover {
+  background-color: #e81123; /* red hover for close */
+  color: #fff;
+}
+
+.control-btn.close-btn:active {
+  background-color: #f1707a;
+}
+
+/* Add subtle separator between buttons */
+.window-controls .control-btn:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* Specific icon size adjustments */
+.control-btn.minimize-btn svg {
+  margin-top: 0;
+}
+
+.control-btn.maximize-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+.control-btn.close-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Body padding for fixed titlebar */
+body {
+  margin-top: 40px;
+}
